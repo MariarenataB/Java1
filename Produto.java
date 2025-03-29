@@ -1,66 +1,31 @@
-public class Produto {
-    private int codigo;
+
+
+class Produto {
     private String nome;
-    private String tamanhoOuPeso;
-    private String cor;
-    private double valor;
-    private int quantidadeEstoque;
+    private double preco;
+    private int estoque;
 
-
-    public Produto(int codigo, String nome, String tamanhoOuPeso, String cor, double valor, int quantidadeEstoque) {
-        this.codigo = codigo;
+    public Produto(String nome, double preco, int estoque) {
         this.nome = nome;
-        this.tamanhoOuPeso = tamanhoOuPeso;
-        this.cor = cor;
-        this.valor = valor;
-        this.quantidadeEstoque = quantidadeEstoque;
-    }
-
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getTamanhoOuPeso() {
-        return tamanhoOuPeso;
-    }
-
-    public String getCor() {
-        return cor;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public int getQuantidadeEstoque() {
-        return quantidadeEstoque;
+        this.preco = preco;
+        this.estoque = estoque;
     }
 
     public void adicionarEstoque(int quantidade) {
-        this.quantidadeEstoque += quantidade;
+        estoque += quantidade;
+        System.out.println(quantidade + " unidades adicionadas.");
     }
 
-    public boolean venderProduto(int quantidade) {
-        if (quantidade <= quantidadeEstoque) {
-            this.quantidadeEstoque -= quantidade;
-            return true;
+    public void venderProduto(int quantidade) {
+        if (quantidade <= estoque) {
+            estoque -= quantidade;
+            System.out.println(quantidade + " unidades vendidas.");
         } else {
-            System.out.println("Estoque insuficiente.");
-            return false;
+            System.out.println("Estoque insuficiente!");
         }
     }
 
-    public void exibirProduto() {
-        System.out.println("Produto: " + nome);
-        System.out.println("Código: " + codigo);
-        System.out.println("Tamanho/Peso: " + tamanhoOuPeso);
-        System.out.println("Cor: " + cor);
-        System.out.println("Valor: R$ " + valor);
-        System.out.println("Estoque: " + quantidadeEstoque);
+    public void exibirEstoque() {
+        System.out.println("Estoque atual: " + estoque);
     }
 }
